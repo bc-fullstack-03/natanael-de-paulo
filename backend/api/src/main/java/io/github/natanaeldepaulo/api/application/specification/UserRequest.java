@@ -1,4 +1,4 @@
-package io.github.natanaeldepaulo.api.application.dto;
+package io.github.natanaeldepaulo.api.application.specification;
 
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import lombok.Data;
