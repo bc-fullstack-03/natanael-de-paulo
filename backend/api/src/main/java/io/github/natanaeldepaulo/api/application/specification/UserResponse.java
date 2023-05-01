@@ -1,10 +1,9 @@
-package io.github.natanaeldepaulo.api.application.specification;
 
+package io.github.natanaeldepaulo.api.application.specification;
+package io.github.natanaeldepaulo.api.application.dto;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import lombok.Data;
-
 import java.util.UUID;
-
 
 @Data
 public class UserResponse {
