@@ -1,11 +1,8 @@
-package io.github.natanaeldepaulo.api.application.specification;
 
+package io.github.natanaeldepaulo.api.application.specification;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import lombok.Data;
-import org.springframework.boot.jackson.JsonComponent;
-
 import java.util.UUID;
-
 
 @Data
 public class UserResponse {
