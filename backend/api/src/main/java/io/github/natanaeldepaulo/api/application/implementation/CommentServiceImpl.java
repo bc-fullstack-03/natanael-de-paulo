@@ -1,6 +1,7 @@
 package io.github.natanaeldepaulo.api.application.implementation;
 
 import io.github.natanaeldepaulo.api.application.ICommentService;
+import io.github.natanaeldepaulo.api.application.IPostService;
 import io.github.natanaeldepaulo.api.application.specification.CommentRequest;
 import io.github.natanaeldepaulo.api.application.specification.CommentResponse;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
@@ -16,20 +17,18 @@ public class CommentServiceImpl implements ICommentService {
     @Autowired
     private IPostRepository postRepository;
 
+    @Autowired
+    IPostService postService;
+
     @Override
-    public Optional<CommentResponse> create(CommentRequest request, String postId, String profileId){
+    public CommentResponse create(CommentRequest request, String postId, String profileId){
         var comment = Comment.create(
                 request.description,
                 ConvertFormatId.toUUID(postId) ,
                 ConvertFormatId.toUUID(profileId)
         );
 
-        var post = postRepository.findById(ConvertFormatId.toUUID(postId));
-        post.get().getComments().add(comment);
-        postRepository.save(post.get());
-
-        return Optional.of(new CommentResponse(comment));
+        postService.saveCommentToList(comment, comment.getPost_id().toString());
+        return new CommentResponse(comment);
     }
-
-
 }

@@ -3,6 +3,8 @@ package io.github.natanaeldepaulo.api.application.implementation;
 import io.github.natanaeldepaulo.api.application.IPostService;
 import io.github.natanaeldepaulo.api.application.specification.PostRequest;
 import io.github.natanaeldepaulo.api.application.specification.PostResponse;
+import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
+import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 import io.github.natanaeldepaulo.api.domain.entities.Post;
 import io.github.natanaeldepaulo.api.domain.interfaces.IPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +41,7 @@ public class PostServiceImpl implements IPostService {
     public Optional<PostResponse> create(PostRequest request, String profile_id){
         var profileId = UUID.fromString(profile_id);
         var post = Post.create(request, profileId);
-        _postRepository.save(post);
+        _postRepository.insert(post);
 
         var response = new PostResponse(
             post.getId(),
@@ -53,5 +55,13 @@ public class PostServiceImpl implements IPostService {
         );
 
         return Optional.of(response);
+    }
+
+
+    @Override
+    public void saveCommentToList(Comment comment, String postId){
+        var post = _postRepository.findById(ConvertFormatId.toUUID(postId));
+        post.get().getComments().add(comment);
+        _postRepository.save(post.get());
     }
 }
