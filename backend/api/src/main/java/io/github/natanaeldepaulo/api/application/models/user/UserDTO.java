@@ -1,5 +1,5 @@
 
-package io.github.natanaeldepaulo.api.application.specification;
+package io.github.natanaeldepaulo.api.application.models.user;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import io.github.natanaeldepaulo.api.domain.entities.User;
 import lombok.Data;

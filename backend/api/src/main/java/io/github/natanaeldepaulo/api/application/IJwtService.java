@@ -1,7 +1,7 @@
 package io.github.natanaeldepaulo.api.application;
 
-import io.github.natanaeldepaulo.api.application.specification.UserResponse;
+import io.github.natanaeldepaulo.api.application.models.user.UserDTO;
 
 public interface IJwtService {
-    String generateToken(UserResponse user);
+    String generateToken(UserDTO user);
 }
