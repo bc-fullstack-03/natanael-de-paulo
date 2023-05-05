@@ -1,7 +1,7 @@
 package io.github.natanaeldepaulo.api.application.implementation;
 
 import io.github.natanaeldepaulo.api.application.ICommentService;
-import io.github.natanaeldepaulo.api.application.IPostService;
+import io.github.natanaeldepaulo.api.application.models.post.IPostService;
 import io.github.natanaeldepaulo.api.application.specification.CommentRequest;
 import io.github.natanaeldepaulo.api.application.specification.CommentResponse;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
@@ -20,7 +20,7 @@ public class CommentServiceImpl implements ICommentService {
     @Override
     public CommentResponse findById(String postId, String commentId){
         var _commentId = ConvertFormatId.toUUID(commentId);
-        List<Comment> comments = postService.findPostById(postId).get().getComments();
+        List<Comment> comments = postService.findPostById(postId).getComments();
         var comment = comments.stream().filter(c -> c.getId().equals(_commentId)).findFirst();
         return new CommentResponse(comment.get());
     }

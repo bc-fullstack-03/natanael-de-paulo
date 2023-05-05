@@ -1,18 +1,15 @@
-package io.github.natanaeldepaulo.api.application;
+package io.github.natanaeldepaulo.api.application.models.post;
 
 import io.github.natanaeldepaulo.api.application.specification.CommentRequest;
-import io.github.natanaeldepaulo.api.application.specification.PostRequest;
-import io.github.natanaeldepaulo.api.application.specification.PostResponse;
 import io.github.natanaeldepaulo.api.application.specification.UpdatePostRequest;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IPostService {
-    List<PostResponse> findPosts(String profileId);
-    Optional<PostResponse> findPostById(String post_id);
-    Optional<PostResponse> createPost(PostRequest post, String profile_id);
+    List<PostDTO> findPosts(String profileId);
+    PostDTO findPostById(String post_id);
+    PostDTO createPost(PostRequest post, String profile_id);
     void updatePost(String postId, UpdatePostRequest dataToUpdate) throws Exception;
     void deletePost(String postId) throws Exception;
     void saveCommentToList(Comment comment, String postId);
