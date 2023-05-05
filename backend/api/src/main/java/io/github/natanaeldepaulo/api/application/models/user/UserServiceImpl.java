@@ -1,8 +1,5 @@
 package io.github.natanaeldepaulo.api.application.models.user;
 
-import io.github.natanaeldepaulo.api.application.models.user.UserRequest;
-import io.github.natanaeldepaulo.api.application.models.user.IUserService;
-import io.github.natanaeldepaulo.api.application.models.user.UserDTO;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import io.github.natanaeldepaulo.api.domain.interfaces.IUserRepository;
@@ -19,9 +16,10 @@ public final class UserServiceImpl implements IUserService {
     private IUserMapper _userMapper;
 
     @Override
-    public String create(UserRequest request) {
-        var profile = Profile.create(request.profile);
-        var user = User.create(request.name, request.email, request.password, profile);
+    public String create(UserDTO request) {
+        var profile = Profile.create(request.getProfile());
+        request.setProfile(profile);
+        var user = User.create(request);
         _userRepository.insert(user);
         return user.getId().toString();
     }
@@ -33,8 +31,8 @@ public final class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User findUserByEmail(String email) {
-        var query = _userRepository.findByEmail(email);
-        return query;
+    public UserDTO findUserByEmail(String email) {
+        var user = _userRepository.findByEmail(email);
+        return _userMapper.toDTO(user);
     }
 }

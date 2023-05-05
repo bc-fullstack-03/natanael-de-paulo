@@ -28,40 +28,12 @@ public class User {
     }
 
     //using factory method
-    public static User create(String name, String email, String password, Profile profile){
-        return new User(name, email, password, profile);
+    public static User create(UserDTO userDTO){
+        return new User(
+                userDTO.getName(),
+                userDTO.getEmail(),
+                userDTO.getPassword(),
+                userDTO.getProfile()
+        );
     }
-
-    public static User userMapping(UserDTO userDTO){
-        var user = new User();
-        user.setId(userDTO.getId());
-        user.setName(userDTO.getName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(user.getPassword());
-        user.setProfile(userDTO.getProfile());
-
-        return user;
-    }
-
-
-    private void setId(UUID id){
-        this.id = id;
-    }
-
-    private void setName(String name){
-        this.name = name;
-    }
-
-    private void setEmail(String email){
-        this.email = email;
-    }
-
-    private void setPassword(String password){
-        this.id = id;
-    }
-
-    private void setProfile(Profile profile){
-        this.profile = profile;
-    }
-
 }

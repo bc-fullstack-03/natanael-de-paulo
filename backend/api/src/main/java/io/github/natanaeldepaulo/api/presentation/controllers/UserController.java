@@ -1,6 +1,5 @@
 package io.github.natanaeldepaulo.api.presentation.controllers;
 
-import io.github.natanaeldepaulo.api.application.models.user.UserRequest;
 import io.github.natanaeldepaulo.api.application.models.user.IUserService;
 import io.github.natanaeldepaulo.api.application.models.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createUser(@RequestBody UserRequest request){
+    public ResponseEntity<String> createUser(@RequestBody UserDTO request){
         var response = _userService.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
