@@ -1,7 +1,7 @@
 package io.github.natanaeldepaulo.api.application.implementation;
 
-import io.github.natanaeldepaulo.api.application.IJwtService;
-import io.github.natanaeldepaulo.api.application.specification.UserResponse;
+import io.github.natanaeldepaulo.api.application.ITokenProvider;
+import io.github.natanaeldepaulo.api.application.specification.UserDTO;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,9 +14,9 @@ import java.util.Date;
 import java.util.UUID;
 
 @Service
-public class JwtServiceImpl implements IJwtService {
+public class TokenProvider implements ITokenProvider {
     @Override
-    public String generateToken(UserResponse user){
+    public String generateToken(UserDTO user){
         return Jwts
                 .builder()
                 .setSubject(ConvertFormatId.toString(user.getId()))
@@ -39,5 +39,9 @@ public class JwtServiceImpl implements IJwtService {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode("4D6250655368566D597133743677397A24432646294A404E635266546A576E5A"));
     }
 
-
+    @Override
+    public String getSubject(String token){
+        var sub = Jwts.parserBuilder().setSigningKey(genSignInKey()).build().parseClaimsJws(token).getBody();
+        return sub.getSubject();
+    }
 }

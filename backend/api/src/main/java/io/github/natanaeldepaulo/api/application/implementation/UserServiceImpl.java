@@ -2,7 +2,7 @@ package io.github.natanaeldepaulo.api.application.implementation;
 
 import io.github.natanaeldepaulo.api.application.specification.UserRequest;
 import io.github.natanaeldepaulo.api.application.IUserService;
-import io.github.natanaeldepaulo.api.application.specification.UserResponse;
+import io.github.natanaeldepaulo.api.application.specification.UserDTO;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import io.github.natanaeldepaulo.api.domain.interfaces.IUserRepository;
@@ -26,9 +26,9 @@ public final class UserServiceImpl implements IUserService {
 
 
     @Override
-    public UserResponse findUserById(String id) {
+    public UserDTO findUserById(String id) {
         var query = _userRepository.findById(ConvertFormatId.toUUID(id));
-        return new UserResponse(query.get());
+        return new UserDTO(query.get());
     }
 
     @Override

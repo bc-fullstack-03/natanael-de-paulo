@@ -4,5 +4,8 @@ import lombok.Data;
 @Data
 public class AuthResponse {
     public String token;
+    public String UserId;
+
+
     public AuthResponse(){}
 }
