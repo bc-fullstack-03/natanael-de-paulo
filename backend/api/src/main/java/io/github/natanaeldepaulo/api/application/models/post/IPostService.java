@@ -1,7 +1,6 @@
 package io.github.natanaeldepaulo.api.application.models.post;
 
-import io.github.natanaeldepaulo.api.application.specification.CommentRequest;
-import io.github.natanaeldepaulo.api.application.specification.UpdatePostRequest;
+import io.github.natanaeldepaulo.api.application.models.post.comment.CommentRequest;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 
 import java.util.List;

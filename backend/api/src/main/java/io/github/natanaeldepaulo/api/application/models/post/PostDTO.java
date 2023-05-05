@@ -3,7 +3,6 @@ package io.github.natanaeldepaulo.api.application.models.post;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 import io.github.natanaeldepaulo.api.domain.embedded.Likes;
-import io.github.natanaeldepaulo.api.domain.entities.Post;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
