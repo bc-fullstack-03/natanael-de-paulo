@@ -26,8 +26,7 @@ public class SecurityConfig {
                     .permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/v1/auth")
                     .permitAll()
-                    .anyRequest()
-                    .permitAll()
+                    .anyRequest().authenticated()
                     .and().build();
     }
 

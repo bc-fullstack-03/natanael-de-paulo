@@ -39,8 +39,8 @@ public final class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserDTO findUserByEmail(String email) {
+    public User findUserByEmail(String email) {
         var user = _userRepository.findByEmail(email);
-        return _userMapper.toDTO(user);
+        return user;
     }
 }
