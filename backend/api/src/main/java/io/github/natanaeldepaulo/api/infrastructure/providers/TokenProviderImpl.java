@@ -22,8 +22,9 @@ public class TokenProviderImpl implements ITokenProvider {
     public String generateToken(UserDTO user){
         return Jwts
                 .builder()
-                .setSubject(ConvertFormatId.toString(user.getId()))
-                .claim("profileId", user.getProfile().getId())
+                .setSubject(user.getEmail())
+                .claim("profileId",ConvertFormatId.toString(user.getProfile().getId()))
+                .claim("userId", ConvertFormatId.toString(user.getId()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 7200000))
                 .signWith(genSignInKey(), SignatureAlgorithm.HS256)
