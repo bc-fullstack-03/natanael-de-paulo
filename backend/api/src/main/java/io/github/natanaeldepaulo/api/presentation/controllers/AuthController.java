@@ -3,20 +3,37 @@ package io.github.natanaeldepaulo.api.presentation.controllers;
 import io.github.natanaeldepaulo.api.application.models.auth.IAuthService;
 import io.github.natanaeldepaulo.api.application.models.auth.AuthRequest;
 import io.github.natanaeldepaulo.api.application.models.auth.AuthDTO;
+import io.github.natanaeldepaulo.api.application.models.user.UserDTO;
+import io.github.natanaeldepaulo.api.domain.entities.User;
+import io.github.natanaeldepaulo.api.infrastructure.providers.ITokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1/user/auth")
+@RequestMapping("/api/v1")
 public class AuthController {
     @Autowired
-    private IAuthService authService;
+    private ITokenProvider _tokenProvider;
 
-    @PostMapping
+    @Autowired
+    private AuthenticationManager _authenticationManager;
+
+    @PostMapping("/auth")
     public ResponseEntity<AuthDTO> auth(@RequestBody AuthRequest request) {
-        var response = authService.auth(request);
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword());
+
+        Authentication authenticate = _authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+
+        var user = (UserDTO) authenticate.getPrincipal();
+        var token = _tokenProvider.generateToken(user);
+
+        var response = new AuthDTO();
+        response.setToken(token);
         return ResponseEntity.ok().body(response);
     }
 }

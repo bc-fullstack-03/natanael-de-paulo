@@ -8,6 +8,7 @@ import io.github.natanaeldepaulo.api.infrastructure.repositories.IUserRepository
 import io.github.natanaeldepaulo.api.domain.entities.User;
 import io.github.natanaeldepaulo.api.infrastructure.mappers.IUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,10 +18,15 @@ public final class UserServiceImpl implements IUserService {
     @Autowired
     private IUserMapper _userMapper;
 
+    @Autowired
+    PasswordEncoder _passwordEncoder;
+
     @Override
     public String create(UserDTO request) {
         var profile = Profile.create(request.getProfile());
         request.setProfile(profile);
+        var passHash = _passwordEncoder.encode(request.getPassword());
+        request.setPassword(passHash);
         var user = User.create(request);
         _userRepository.insert(user);
         return user.getId().toString();
