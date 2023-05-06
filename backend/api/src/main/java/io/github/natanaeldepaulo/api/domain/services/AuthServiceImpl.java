@@ -1,7 +1,7 @@
 package io.github.natanaeldepaulo.api.domain.services;
 
 import io.github.natanaeldepaulo.api.application.models.auth.IAuthService;
-import io.github.natanaeldepaulo.api.application.models.auth.ITokenProvider;
+import io.github.natanaeldepaulo.api.infrastructure.providers.ITokenProvider;
 import io.github.natanaeldepaulo.api.application.models.user.IUserService;
 import io.github.natanaeldepaulo.api.application.models.auth.AuthRequest;
 import io.github.natanaeldepaulo.api.application.models.auth.AuthDTO;
