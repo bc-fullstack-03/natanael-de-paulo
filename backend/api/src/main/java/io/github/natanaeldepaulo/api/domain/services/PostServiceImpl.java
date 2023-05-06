@@ -8,7 +8,7 @@ import io.github.natanaeldepaulo.api.application.models.post.comment.CommentRequ
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 import io.github.natanaeldepaulo.api.domain.entities.Post;
-import io.github.natanaeldepaulo.api.domain.interfaces.IPostRepository;
+import io.github.natanaeldepaulo.api.infrastructure.repositories.IPostRepository;
 import io.github.natanaeldepaulo.api.infrastructure.mappers.IPostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
