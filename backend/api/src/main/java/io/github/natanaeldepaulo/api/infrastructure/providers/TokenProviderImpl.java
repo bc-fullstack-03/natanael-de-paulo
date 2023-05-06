@@ -31,7 +31,7 @@ public class TokenProviderImpl implements ITokenProvider {
                 .compact();
     }
 
-
+    @Override
     public Claims getClaimsToToken(String token){
         var claims = Jwts.parserBuilder()
                 .setSigningKey(genSignInKey())

@@ -32,13 +32,11 @@ public class FilterToken extends OncePerRequestFilter {
         if(authorizationHeader != null) {
             var token = authorizationHeader.replace("Bearer ", "");
             var subject = this._tokenProvider.getClaimsToToken(token).getSubject();
-            var user = this._userRepository.findById(ConvertFormatId.toUUID(subject));
-            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.get().getAuthorities());
+            var user = this._userRepository.findByEmail(subject);
+            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
 
         filterChain.doFilter(request, response);
     }
-
-
 }
