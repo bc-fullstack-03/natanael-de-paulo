@@ -1,4 +1,4 @@
-package io.github.natanaeldepaulo.api.domain.mappers;
+package io.github.natanaeldepaulo.api.infrastructure.mappers;
 
 import io.github.natanaeldepaulo.api.application.models.post.PostDTO;
 import io.github.natanaeldepaulo.api.domain.entities.Post;

@@ -1,9 +1,7 @@
-package io.github.natanaeldepaulo.api.domain.mappers;
+package io.github.natanaeldepaulo.api.infrastructure.mappers;
 
 import io.github.natanaeldepaulo.api.application.models.post.PostDTO;
-import io.github.natanaeldepaulo.api.application.models.user.UserDTO;
 import io.github.natanaeldepaulo.api.domain.entities.Post;
-import io.github.natanaeldepaulo.api.domain.entities.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

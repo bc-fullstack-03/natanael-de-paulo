@@ -1,10 +1,12 @@
-package io.github.natanaeldepaulo.api.application.models.user;
+package io.github.natanaeldepaulo.api.domain.services;
 
+import io.github.natanaeldepaulo.api.application.models.user.IUserService;
+import io.github.natanaeldepaulo.api.application.models.user.UserDTO;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import io.github.natanaeldepaulo.api.domain.interfaces.IUserRepository;
 import io.github.natanaeldepaulo.api.domain.entities.User;
-import io.github.natanaeldepaulo.api.domain.mappers.IUserMapper;
+import io.github.natanaeldepaulo.api.infrastructure.mappers.IUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

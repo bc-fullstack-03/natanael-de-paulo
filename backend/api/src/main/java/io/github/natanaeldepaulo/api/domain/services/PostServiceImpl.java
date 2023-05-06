@@ -1,11 +1,15 @@
-package io.github.natanaeldepaulo.api.application.models.post;
+package io.github.natanaeldepaulo.api.domain.services;
 
+import io.github.natanaeldepaulo.api.application.models.post.IPostService;
+import io.github.natanaeldepaulo.api.application.models.post.PostDTO;
+import io.github.natanaeldepaulo.api.application.models.post.PostRequest;
+import io.github.natanaeldepaulo.api.application.models.post.UpdatePostRequest;
 import io.github.natanaeldepaulo.api.application.models.post.comment.CommentRequest;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 import io.github.natanaeldepaulo.api.domain.entities.Post;
 import io.github.natanaeldepaulo.api.domain.interfaces.IPostRepository;
-import io.github.natanaeldepaulo.api.domain.mappers.IPostMapper;
+import io.github.natanaeldepaulo.api.infrastructure.mappers.IPostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,9 @@
-package io.github.natanaeldepaulo.api.application.models.post.comment;
+package io.github.natanaeldepaulo.api.domain.services;
 
 import io.github.natanaeldepaulo.api.application.models.post.IPostService;
+import io.github.natanaeldepaulo.api.application.models.post.comment.CommentDTO;
+import io.github.natanaeldepaulo.api.application.models.post.comment.CommentRequest;
+import io.github.natanaeldepaulo.api.application.models.post.comment.ICommentService;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
