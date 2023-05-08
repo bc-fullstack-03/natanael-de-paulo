@@ -8,6 +8,7 @@ import io.github.natanaeldepaulo.api.application.models.post.comment.CommentRequ
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
 import io.github.natanaeldepaulo.api.domain.entities.Post;
+import io.github.natanaeldepaulo.api.infrastructure.IEventService;
 import io.github.natanaeldepaulo.api.infrastructure.repositories.IPostRepository;
 import io.github.natanaeldepaulo.api.infrastructure.mappers.IPostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class PostServiceImpl implements IPostService {
     IPostRepository _postRepository;
     @Autowired
     IPostMapper _postMapper;
+
+    @Autowired
+    private IEventService _eventService;
 
 
     @Override
@@ -49,6 +53,7 @@ public class PostServiceImpl implements IPostService {
         var profileId = UUID.fromString(profile_id);
         var post = Post.create(request, profileId);
         _postRepository.insert(post);
+        _eventService.send("post-created",post.toString());
         return _postMapper.toDTO(post);
     }
 
