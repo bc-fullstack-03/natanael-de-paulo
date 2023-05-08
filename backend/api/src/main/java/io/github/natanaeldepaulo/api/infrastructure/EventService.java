@@ -3,6 +3,7 @@ package io.github.natanaeldepaulo.api.infrastructure;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,10 @@ public class EventService implements IEventService{
         _kafkaTemplate.send(topic, event);
     }
 
-    public String consume(ConsumerRecord<String, String> event){
-        return event.value();
+    @Override
+    @KafkaListener(topics = "${topic.name}", groupId = "ms-demo")
+    public void consume(ConsumerRecord<String, String> event){
+        System.out.println(event.value());
     }
 
 }

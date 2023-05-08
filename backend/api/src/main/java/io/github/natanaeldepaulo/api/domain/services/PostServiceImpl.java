@@ -53,7 +53,7 @@ public class PostServiceImpl implements IPostService {
         var profileId = UUID.fromString(profile_id);
         var post = Post.create(request, profileId);
         _postRepository.insert(post);
-        _eventService.send("post-created",post.toString());
+        _eventService.send("post-created", post.getId().toString());
         return _postMapper.toDTO(post);
     }
 
