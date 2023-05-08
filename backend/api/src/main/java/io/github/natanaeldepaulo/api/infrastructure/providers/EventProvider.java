@@ -1,4 +1,4 @@
-package io.github.natanaeldepaulo.api.infrastructure;
+package io.github.natanaeldepaulo.api.infrastructure.providers;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EventService implements IEventService{
+public class EventProvider implements IEventProvider {
 
     @Autowired
     private KafkaTemplate<String, String> _kafkaTemplate;
