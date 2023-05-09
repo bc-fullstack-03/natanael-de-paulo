@@ -1,15 +1,16 @@
 package io.github.natanaeldepaulo.api.domain.services;
 
 import io.github.natanaeldepaulo.api.application.models.user.IUserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class AuthServiceImpl implements UserDetailsService {
-    @Autowired
     private IUserService _userService;
 
     @Override

@@ -13,22 +13,20 @@ import io.github.natanaeldepaulo.api.domain.entities.Post;
 import io.github.natanaeldepaulo.api.application.models.infraInterfaces.IEventProvider;
 import io.github.natanaeldepaulo.api.infrastructure.repositories.IPostRepository;
 import io.github.natanaeldepaulo.api.application.models.post.IPostMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class PostServiceImpl implements IPostService {
-    @Autowired
-    IPostRepository _postRepository;
-    @Autowired
+    private IPostRepository _postRepository;
     private IEventProvider _eventService;
-    @Autowired
-    IUploadService _uploadService;
-    @Autowired
-    IPostMapper _postMapper;
+    private IUploadService _uploadService;
+    private IPostMapper _postMapper;
 
 
     @Override

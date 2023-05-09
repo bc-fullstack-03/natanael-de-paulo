@@ -6,15 +6,15 @@ import io.github.natanaeldepaulo.api.application.models.post.comment.CommentRequ
 import io.github.natanaeldepaulo.api.application.models.post.comment.ICommentService;
 import io.github.natanaeldepaulo.api.application.utils.ConvertFormatId;
 import io.github.natanaeldepaulo.api.domain.embedded.Comment;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class CommentServiceImpl implements ICommentService {
-
-    @Autowired
     private IPostService _postService;
 
     @Override

@@ -8,22 +8,20 @@ import io.github.natanaeldepaulo.api.domain.embedded.Profile;
 import io.github.natanaeldepaulo.api.infrastructure.repositories.IUserRepository;
 import io.github.natanaeldepaulo.api.domain.entities.User;
 import io.github.natanaeldepaulo.api.application.models.user.IUserMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+@AllArgsConstructor
 @Service
 public final class UserServiceImpl implements IUserService {
-    @Autowired
     private IUserRepository _userRepository;
-    @Autowired
     private IUserMapper _userMapper;
-    @Autowired
     private IUploadService _uploadService;
-    @Autowired
-    PasswordEncoder _passwordEncoder;
+    private PasswordEncoder _passwordEncoder;
 
     @Override
     public String create(UserDTO request) {

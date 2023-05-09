@@ -3,7 +3,6 @@ package io.github.natanaeldepaulo.api.application.models.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.github.natanaeldepaulo.api.domain.embedded.Profile;
-import io.github.natanaeldepaulo.api.domain.entities.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
